@@ -1,81 +1,104 @@
+
 # Curvetopia
 
-#Overview  
-This project focuses on developing a Convolutional Neural Network (CNN) to automatically detect and classify basic geometric shapes, including circles, squares, triangles, and ellipses, from image files. The core idea is to preprocess these images by converting them into polylines, which simplifies the shape data, making it easier for the CNN to learn and make predictions.
+# Regularizing and Detecting Shapes
 
-The workflow involves the following key steps:
+This project focuses on training and testing a Convolutional Neural Network (CNN) model to identify and detect various shapes such as circles, squares, triangles, and ellipses. The model is trained using `.png` image files that are converted into polylines, vectorized, and regularized before training. The trained model can then predict shapes from new images, even if they are hand-drawn.
 
-Image Preprocessing: Converting .png images into vectorized polylines.
-Model Training: Using these vectorized images to train a CNN model, incorporating regularization techniques to enhance model performance and generalization.
-Model Testing: Testing the trained model on new, handmade images, allowing it to predict the shapes in these images.   
+## Project Structure
 
-#Installation  
-To set up the project on your local machine, follow these steps:
+- **Training**: The model is trained using `.png` images converted into polylines. The images are vectorized and regularized before being fed into the CNN for training.
+- **Testing**: The trained model is tested on handmade images that are uploaded as `.png` files. These images are also converted into polylines and vectorized before the model predicts whether they are circles, squares, triangles, or ellipses.
 
-1.Clone the Repository:
+## Installation
 
-bash   
-git clone https://github.com/your-repo-url.git   
-cd shape-detection-cnn   
+To run this project, you need to have the following Python libraries installed:
 
-2.Install the Required Dependencies:
+- `cv2` (OpenCV)
+- `numpy`
+- `tensorflow`
+- `matplotlib`
+- `os`
+- `sklearn`
 
-bash  
-pip install -r requirements.txt
+You can install the necessary packages using pip:
 
-
-Usage  
-To use this project, follow these steps:
-
-1.Vectorize the Images:
-
-Use the vectorize_image() function to convert .png images into polylines.  
-Save these vectorized images using the save_vectorized_images() function.
-
-2.Train the Model:
-
-Open the provided Jupyter notebook.  
-Run the training cells to train the CNN on the vectorized images.  
-
-3.Test the Model:
-
-Upload new handmade .png images.  
-Convert these images to polylines and use the model to predict the shape.  
-
-#Project Structure  
-data/:  
-  raw/: Contains the original .png images of shapes.  
-  vectorized/: Contains the vectorized images saved as .npy files.
-
-models/:  
-Contains the trained model file (shape_detector.h5).
-
-notebooks/:  
-Regularizing_and_detecting_shapes.ipynb: The main notebook for training and testing the model.
-
-README.md: Provides an overview of the project.
-
-requirements.txt: Lists all dependencies required to run the project.
-
-#Dataset
-
-The dataset comprises various .png images, each representing a specific shape (circle, square, triangle, or ellipse).
-These images are vectorized into polylines to simplify the data and make it suitable for training the CNN.    
-
-#Training the Model     
-The CNN is trained using TensorFlow and Keras, with a focus on extracting spatial features from the vectorized shape data.
-Regularization techniques like L2 regularization are employed to prevent overfitting and improve the model's ability to generalize to new data.
-
-#Testing the Model   
-After training, the model is tested on new, unseen images.
-These images are also vectorized into polylines, and the model predicts the shape in the image.
-The accuracy and performance of the model are evaluated using metrics like accuracy, precision, and recall.
-
-#Results  
-The model demonstrates strong performance in accurately identifying and classifying shapes from both the training data and new handmade images.
-Detailed results and performance metrics can be found in the Jupyter notebook.
-
-#License  
-This project is licensed under the MIT License.
+```bash
+pip install opencv-python numpy tensorflow matplotlib scikit-learn
+```
 
 
+# Usage
+## Vectorizing Images
+
+The project begins by vectorizing the .png images to prepare them for model training and testing:  
+ Convert to grayscale  
+ Apply binary thresholding  
+ Find contours  
+ Create an empty image to draw contours  
+ Draw contours as polylines  
+ Save the resulting image
+
+## Training the Model
+The CNN model is built and trained on the vectorized images:  
+ Define input shape  
+ Build CNN model  
+ Train the CNN model  
+ Evaluate the model
+
+## Testing the Model
+After training, the model can predict shapes from new images:  
+ Read the image 
+ Vectorize the input image 
+ Reshape for the model 
+ Make predictions 
+ Interpret predictions 
+ Visualize the image with contours and prediction 
+
+## Project Structure
+Regularizing_and_Detecting_Shapes.ipynb: The main notebook containing the code and explanation for predicting various shapes.
+
+## Contributing
+Feel free to submit issues or pull requests if you have suggestions for improvements or new features.
+
+# Finding the Possible Symmetries for the Regularized Shapes
+
+This project aims to identify possible symmetries in regularized shapes using various computational techniques. The notebook provides methods to process images, vectorize contours, and detect symmetries, displaying results graphically.
+
+## Installation
+
+To run the notebook, you need to have the following Python libraries installed:
+
+- `numpy`
+- `matplotlib`
+- `os`
+- `cv2` (OpenCV)
+
+You can install the necessary packages using pip:
+
+```bash
+pip install numpy matplotlib opencv-python
+```
+## Usage
+The notebook provides an example workflow for detecting symmetries in shapes:
+
+1.Create a figure with two subplots: one for the image and one for symmetry results.  
+2.Plot the image with contours.  
+3.Detect symmetries and display the results.
+
+## Example Usage 
+ 1.Example code to detect and visualize symmetries  
+ 2.Create a figure with two subplots: one for the image and one for symmetry results  
+ 3.Plot the image with contours  
+ 4.Plot the symmetry results  
+ 5.Flatten the contour to ensure correct shape  
+ 6.Flatten the rotated contour to compare  
+ 7.Vectorize the image  
+ 8.Detect symmetries  
+ 9.Draw and display the vectorized contours with symmetry results
+
+## Project Structure
+Finding_Possible_Symmetries.ipynb: The main notebook containing the code and explanation for detecting symmetries.
+
+## Contributing
+Feel free to submit issues or pull requests if you have suggestions for improvements or new features.
